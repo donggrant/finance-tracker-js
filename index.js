@@ -31,7 +31,7 @@ function load_transactions() {
         transactions = JSON.parse(result);
     }
     // update balance with all amounts in transactions
-    transactions.forEach((amount) => update_balance(amount)); 
+    transactions.forEach((transaction) => update_balance(transaction.amount)); 
      
     display_transactions();
 
@@ -98,4 +98,5 @@ function update_balance(amount) {
     balance += amount;
     document.getElementById("balance").innerHTML = "Balance: " + balance;
 }
+
 
