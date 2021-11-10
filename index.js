@@ -31,7 +31,7 @@ function load_transactions() {
         transactions = JSON.parse(result);
     }
     // update balance with all amounts in transactions
-    transactions.forEach((amount) => update_balance(amount)); 
+    transactions.forEach((transaction) => update_balance(transaction.amount)); 
      
     display_transactions();
 
@@ -42,7 +42,6 @@ function load_transactions() {
 
 function display_transactions() {
     var body = document.getElementById("transaction_body");
-
     for(var i = 0; i < transactions.length; i++) {
         var transaction = transactions[i];
 
@@ -79,23 +78,23 @@ form.addEventListener('submit', (event) => {
         amount *= -1;
     }
     var transaction = new Transaction(name, date, amount);
-    transactions.push(transaction);
-    window.location.reload();
+    transactions.push(transaction); 
 });
 
 function clear_transactions() {
-    transactions = [];
-    window.location.reload();
+    transactions = []; 
 }
-
+ 
 function delete_transaction(index) {
     transactions.splice(index, 1);
-    window.location.reload();
+    display_transactions();
 }
 
 
 function update_balance(amount) {
-    balance += amount;
+    var curr_balance = parseInt(balance);
+    curr_balance += amount;
+    balance = curr_balance;
     document.getElementById("balance").innerHTML = "Balance: " + balance;
 }
 
