@@ -20,11 +20,8 @@
             <ul class="navbar-nav mr-auto">
                 <div> 
                     <li class="nav-item">
-                        Mike Hunt
-                    </li> 
-                    <li class="nav-item">
-                        mjh2pp@virginia.edu
-                    </li> 
+                        Anonymous Armadillo
+                    </li>  
                 </div> 
             </ul>
         </div>  
@@ -34,7 +31,7 @@
     <div class="container" style="margin-top: 15px;">
         <div class="row col-xs-8">
             <h1>Transaction History</h1>
-            <h3>Balance: Var goes here</h3>
+            <h3 id="balance">Balance: 0</h3>
         </div>
         <br>
         <div class="row">
@@ -89,45 +86,6 @@
             <br>
         </form>
     </div>
-
-	<script type="text/javascript">
-	
-	function Zombie(name, deathDate, food) {
-		this.name = name;
-		this.deathDate = deathDate;
-		this.food = food;
-		
-		this.intro = function() { 
-			return "I am " + name + ". Like " + food + "!"; 
-		}
-	}
-	
-	// Request a Zombie
-    /*
-	var name = prompt("Give me a zombie name");
-	var dd = prompt("Give me a zombie death date");
-	var food = prompt("Give me a zombie food");
-	var zombie2 = new Zombie(name, dd, food);
-    */
-
-    // Write Zombie as JSON
-    document.write(localStorage.getItem("zombie"));
-    
-    // Take a look at what happens when we stringify then parse
-    /*
-    var jsonZombie = JSON.stringify(zombie2);
-    var zombie3 = JSON.parse(jsonZombie);
-    */
-    
-    // note zombie3 is not a Zombie and does not have the
-    // intro() method.
-    
-    // Read from local storage
-    // var jsonFromStorage = localStorage.getItem("zombie");
-	
-	function saveZombie() {
-		localStorage.setItem("zombie", JSON.stringify(zombie2));
-	}
-	</script>
+    <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
