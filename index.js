@@ -31,8 +31,42 @@ function load_transactions() {
         transactions = JSON.parse(result);
     }
     // update balance with all amounts in transactions
-}
+    transactions.forEach((amount) => update_balance(amount)); 
+     
+    display_transactions();
+ 
+}   
 
+
+function display_transactions() {
+    var body = document.getElementById("transaction_body");
+
+    for(var i = 0; i < transactions.length; i++) {
+        var transaction = transactions[i];
+
+        var row = document.createElement("tr");
+    
+        var name = document.createElement("td");
+        var name_text = document.createTextNode(transaction.name);
+
+        var purchase_date = document.createElement("td");
+        var purchase_date_text = document.createTextNode(transaction.purchase_date);
+
+        var amount = document.createElement("td");
+        var amount_text = document.createTextNode(transaction.amount);
+
+        name.appendChild(name_text);
+        row.appendChild(name);
+
+        purchase_date.appendChild(purchase_date_text);
+        row.appendChild(purchase_date);
+        
+        amount.appendChild(amount_text);
+        row.appendChild(amount);
+
+        body.appendChild(row);
+    }
+}
 
 function update_balance(amount) {
     balance += amount;
