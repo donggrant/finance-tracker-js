@@ -23,7 +23,9 @@ function load_transactions() {
 }   
 
 function display_transactions() {
-    var body = document.getElementById("transaction_body");
+    var table = document.getElementById("transaction_table");
+    table.removeChild(table.getElementsByTagName("tbody")[0]);
+    var body = document.createElement("tbody");
     for(var i = 0; i < transactions.length; i++) {
         var transaction = transactions[i];
         var row = document.createElement("tr");    
@@ -38,9 +40,9 @@ function display_transactions() {
         var del = document.createElement("td");
         del.appendChild(delete_button(i));
         row.appendChild(del); 
-
         body.appendChild(row);
     }
+    table.appendChild(body);
 }
 
 function delete_button(i) {
@@ -68,12 +70,12 @@ form.addEventListener('submit', (event) => {
 
 document.getElementById("clear").addEventListener("click", (event) => {
     transactions = []; 
-    window.location.reload();
+    display_transactions();
 });
 
 function delete_transaction(index) {
     transactions.splice(index, 1);
-    window.location.reload();
+    display_transactions();
 }
 
 function update_balance(amount) {
