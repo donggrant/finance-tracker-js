@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--
+            Sources:
+            https://www.javascripttutorial.net/javascript-dom/javascript-form/
+            https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
+            https://www.w3schools.com/jsref/event_onclick.asp
+        -->
         <meta charset="UTF-8">  
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,6 +39,7 @@
             <h1>Transaction History</h1>
             <h3 id="balance">Balance: 0</h3>
         </div>
+        <button type="click" id="clear" class="btn btn-primary">Clear All</button>
         <br>
         <div class="row">
             <table id="transaction_table">
@@ -82,7 +89,7 @@
             <br><br>
             <br>
         </form>
-        <button type="click" id="clear" class="btn btn-primary">Clear</button>
+        
     </div>
     <script type="text/javascript" src="index.js"></script>
 </body>
