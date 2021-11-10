@@ -5,6 +5,7 @@ function Transaction(name, purchase_date, amount) {
 }
  
 var balance = 0;
+var transactions = [];
 
 /*
 // Write Zombie as JSON
@@ -19,13 +20,22 @@ var zombie3 = JSON.parse(jsonZombie);
 
 // Read from local storage
 // var jsonFromStorage = localStorage.getItem("zombie");
-
-function saveZombie() {
-    localStorage.setItem("zombie", JSON.stringify(zombie2));
-}
 */
+function save_transactions() {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+function load_transactions() {
+    var result = localStorage.getItem("transactions");
+    if (result !== null) {
+        transactions = JSON.parse(result);
+    }
+    // update balance with all amounts in transactions
+}
+
 
 function update_balance(amount) {
     balance += amount;
     document.getElementById("balance").innerHTML = "Balance: " + balance;
 }
+
