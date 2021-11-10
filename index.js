@@ -34,6 +34,8 @@ function load_transactions() {
     transactions.forEach((amount) => update_balance(amount)); 
      
     display_transactions();
+
+    console.log(transactions);
  
 }   
 
@@ -70,14 +72,14 @@ function display_transactions() {
 
 const form  = document.getElementById('new_transaction');
 form.addEventListener('submit', (event) => {
-    var name = form.elements["name"];
-    var date = form.elements["purchase_date"];
-    var amount = form.elements["amount"];
+    var name = form.elements["name"].value;
+    var date = form.elements["date"].value;
+    var amount = form.elements["amount"].value;
     if (form.elements["type"] === "debit"){
         amount *= -1;
     }
     var transaction = new Transaction(name, date, amount);
-    transaction.push(transaction);
+    transactions.push(transaction);
     window.location.reload();
 });
 
