@@ -81,19 +81,21 @@ form.addEventListener('submit', (event) => {
     transactions.push(transaction); 
 });
 
-function clear_transactions() {
-    transactions = []; 
-}
- 
+
+document.getElementById('clear').addEventListener('click', (event) => {
+    transactions = []
+    window.location.reload();
+});
+
 function delete_transaction(index) {
     transactions.splice(index, 1);
-    display_transactions();
+    window.location.reload();
 }
 
 
 function update_balance(amount) {
     var curr_balance = parseInt(balance);
-    curr_balance += amount;
+    curr_balance += parseInt(amount);
     balance = curr_balance;
     document.getElementById("balance").innerHTML = "Balance: " + balance;
 }
