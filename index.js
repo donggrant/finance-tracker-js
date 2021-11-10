@@ -33,12 +33,8 @@ function load_transactions() {
     // update balance with all amounts in transactions
     transactions.forEach((transaction) => update_balance(transaction.amount)); 
      
-    display_transactions();
-
-    console.log(transactions);
- 
+    display_transactions(); 
 }   
-
 
 function display_transactions() {
     var body = document.getElementById("transaction_body");
@@ -56,6 +52,15 @@ function display_transactions() {
         var amount = document.createElement("td");
         var amount_text = document.createTextNode(transaction.amount);
 
+        var amount = document.createElement("td");
+        var amount_text = document.createTextNode(transaction.amount);
+
+        var del = document.createElement("td");
+        var delete_button = document.createElement("button");
+        delete_button.className = "btn btn-danger";
+        delete_button.value = "delete";
+        delete_button.onclick = (function(index) {return function() {delete_transaction(index);}})(i);
+
         name.appendChild(name_text);
         row.appendChild(name);
 
@@ -64,6 +69,9 @@ function display_transactions() {
         
         amount.appendChild(amount_text);
         row.appendChild(amount);
+
+        del.appendChild(delete_button);
+        row.appendChild(del);
 
         body.appendChild(row);
     }
@@ -74,16 +82,16 @@ form.addEventListener('submit', (event) => {
     var name = form.elements["name"].value;
     var date = form.elements["date"].value;
     var amount = form.elements["amount"].value;
-    if (form.elements["type"] === "debit"){
+    if (form.elements["type"].value === "debit"){
         amount *= -1;
     }
     var transaction = new Transaction(name, date, amount);
     transactions.push(transaction); 
 });
+ 
 
-
-document.getElementById('clear').addEventListener('click', (event) => {
-    transactions = []
+document.getElementById("clear").addEventListener("click", (event) => {
+    transactions = []; 
     window.location.reload();
 });
 
@@ -92,12 +100,10 @@ function delete_transaction(index) {
     window.location.reload();
 }
 
-
 function update_balance(amount) {
     var curr_balance = parseInt(balance);
     curr_balance += parseInt(amount);
     balance = curr_balance;
     document.getElementById("balance").innerHTML = "Balance: " + balance;
 }
-
 
